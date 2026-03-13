@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
-import 'app_config.dart';
 
-//http_client.dart = “cliente HTTP que usa essa URL”.
+import 'app_config.dart';
 
 final dio = Dio(
   BaseOptions(

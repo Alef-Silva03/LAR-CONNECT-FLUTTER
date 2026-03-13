@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
 import '../data/auth_repository.dart';
 import 'auth_ui.dart';
 
@@ -68,23 +69,17 @@ class _SignupPageState extends State<SignupPage> {
         children: [
           DropdownButtonFormField<String>(
             dropdownColor: AuthColors.field,
-            initialValue: _perfil,
+            value: _perfil,
             style: const TextStyle(color: AuthColors.text),
             decoration: authInputDecoration(
               hint: 'Selecione seu perfil',
               icon: Icons.badge,
             ),
             items: const [
-              DropdownMenuItem(
-                value: 'PROPRIETARIO',
-                child: Text('Proprietário'),
-              ),
+              DropdownMenuItem(value: 'PROPRIETARIO', child: Text('Proprietário')),
               DropdownMenuItem(value: 'INQUILINO', child: Text('Inquilino')),
               DropdownMenuItem(value: 'SINDICO', child: Text('Síndico')),
-              DropdownMenuItem(
-                value: 'FUNCIONARIO',
-                child: Text('Funcionário'),
-              ),
+              DropdownMenuItem(value: 'FUNCIONARIO', child: Text('Funcionário')),
             ],
             onChanged: (v) => setState(() => _perfil = v ?? 'PROPRIETARIO'),
           ),
@@ -98,10 +93,7 @@ class _SignupPageState extends State<SignupPage> {
           TextField(
             controller: _email,
             style: const TextStyle(color: AuthColors.text),
-            decoration: authInputDecoration(
-              hint: 'Email',
-              icon: Icons.alternate_email,
-            ),
+            decoration: authInputDecoration(hint: 'Email', icon: Icons.alternate_email),
           ),
           const SizedBox(height: 12),
           TextField(
@@ -114,19 +106,13 @@ class _SignupPageState extends State<SignupPage> {
           TextField(
             controller: _cpf,
             style: const TextStyle(color: AuthColors.text),
-            decoration: authInputDecoration(
-              hint: 'CPF',
-              icon: Icons.badge_outlined,
-            ),
+            decoration: authInputDecoration(hint: 'CPF', icon: Icons.badge_outlined),
           ),
           const SizedBox(height: 12),
           TextField(
             controller: _telefone,
             style: const TextStyle(color: AuthColors.text),
-            decoration: authInputDecoration(
-              hint: 'Telefone',
-              icon: Icons.phone,
-            ),
+            decoration: authInputDecoration(hint: 'Telefone', icon: Icons.phone),
           ),
           const SizedBox(height: 16),
           ElevatedButton(
@@ -145,7 +131,7 @@ class _SignupPageState extends State<SignupPage> {
             style: authSecondaryButtonStyle(),
             onPressed: () => context.go('/login'),
             child: const Text('JÁ TENHO CONTA (LOGIN)'),
-          ),
+          )
         ],
       ),
     );

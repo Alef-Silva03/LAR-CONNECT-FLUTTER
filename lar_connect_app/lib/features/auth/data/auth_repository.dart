@@ -47,14 +47,12 @@ class AuthRepository {
   Future<void> redefinirSenha({
     required String token,
     required String novaSenha,
-    required String confirmarSenha,
   }) async {
     await _dio.post(
       '/api/nova-senha',
       data: {
         'token': token,
         'novaSenha': novaSenha,
-        'confirmarSenha': confirmarSenha,
       },
     );
   }

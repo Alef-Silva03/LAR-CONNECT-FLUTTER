@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+
 import '../features/auth/data/auth_repository.dart';
 import '../features/auth/presentation/forgot_password_page.dart';
 import '../features/auth/presentation/login_page.dart';
@@ -23,7 +24,14 @@ GoRouter buildRouter(AuthRepository repository) {
       ),
       GoRoute(
         path: '/nova-senha',
-        builder: (context, state) => ResetPasswordPage(repository: repository),
+        builder: (context, state) {
+          final tokenFromExtra = state.extra is String ? state.extra as String : null;
+          final tokenFromQuery = state.uri.queryParameters['token'];
+          return ResetPasswordPage(
+            repository: repository,
+            token: tokenFromExtra ?? tokenFromQuery,
+          );
+        },
       ),
     ],
   );

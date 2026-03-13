@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
 import '../data/auth_repository.dart';
 import 'auth_ui.dart';
 
@@ -58,14 +59,20 @@ class _LoginPageState extends State<LoginPage> {
           TextField(
             controller: _emailController,
             style: const TextStyle(color: AuthColors.text),
-            decoration: authInputDecoration(hint: 'E-mail', icon: Icons.person),
+            decoration: authInputDecoration(
+              hint: 'E-mail',
+              icon: Icons.person,
+            ),
           ),
           const SizedBox(height: 12),
           TextField(
             controller: _senhaController,
             obscureText: true,
             style: const TextStyle(color: AuthColors.text),
-            decoration: authInputDecoration(hint: 'Senha', icon: Icons.lock),
+            decoration: authInputDecoration(
+              hint: 'Senha',
+              icon: Icons.lock,
+            ),
           ),
           const SizedBox(height: 16),
           ElevatedButton(

@@ -10,7 +10,11 @@ class AuthColors {
 }
 
 class AuthScaffold extends StatelessWidget {
-  const AuthScaffold({super.key, required this.title, required this.child});
+  const AuthScaffold({
+    super.key,
+    required this.title,
+    required this.child,
+  });
 
   final String title;
   final Widget child;
@@ -55,7 +59,7 @@ class AuthScaffold extends StatelessWidget {
                             width: 84,
                             height: 108,
                             fit: BoxFit.contain,
-                            errorBuilder: (_, _, _) => const Icon(
+                            errorBuilder: (_, __, ___) => const Icon(
                               Icons.apartment_rounded,
                               color: AuthColors.text,
                               size: 60,
@@ -116,7 +120,10 @@ ButtonStyle authPrimaryButtonStyle() {
     backgroundColor: AuthColors.accent.withOpacity(0.22),
     foregroundColor: AuthColors.text,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
-    textStyle: const TextStyle(fontWeight: FontWeight.w700, letterSpacing: 1),
+    textStyle: const TextStyle(
+      fontWeight: FontWeight.w700,
+      letterSpacing: 1,
+    ),
   );
 }
 
@@ -126,6 +133,9 @@ ButtonStyle authSecondaryButtonStyle() {
     foregroundColor: AuthColors.text,
     side: const BorderSide(color: Colors.white24),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
-    textStyle: const TextStyle(fontWeight: FontWeight.w700, letterSpacing: 1),
+    textStyle: const TextStyle(
+      fontWeight: FontWeight.w700,
+      letterSpacing: 1,
+    ),
   );
 }

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
 import '../data/auth_repository.dart';
 import 'auth_ui.dart';
 
@@ -28,10 +29,22 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     try {
       final token = await widget.repository.solicitarRedefinicao(_email.text.trim());
       if (!mounted) return;
+
+      if (token.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Não foi possível obter token. Tente novamente.')),
+        );
+        return;
+      }
+
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Token recebido: $token')),
+        const SnackBar(content: Text('Solicitação enviada com sucesso.')),
       );
-      context.go('/nova-senha');
+
+      context.go(
+        '/nova-senha?token=${Uri.encodeComponent(token)}',
+        extra: token,
+      );
     } on DioException catch (_) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
@@ -64,7 +77,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     height: 20,
                     child: CircularProgressIndicator(strokeWidth: 2),
                   )
-                : const Text('ENVIAR'),
+                : const Text('ENVIAR TOKEN'),
           ),
           const SizedBox(height: 10),
           OutlinedButton(
